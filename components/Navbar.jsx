@@ -32,7 +32,7 @@ export default function Navbar({
   };
 
   return (
-    <nav className="bg-gray-950/95 backdrop-blur-md border-b border-gray-800/50 sticky top-0 z-50 shadow-lg">
+    <nav className="p-4  bg-gray-950/95 backdrop-blur-md border-b border-gray-800/50 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         {/* LOGO */}
@@ -53,26 +53,27 @@ export default function Navbar({
             <div className="flex items-center gap-4">
               <button
                 onClick={() => openAuthModal("login")}
-                className="px-5 py-2 text-gray-300 hover:text-white font-medium transition-colors flex items-center gap-2"
+                className="px-3 sm:px-5 py-2 text-gray-300 hover:text-white font-medium transition-colors flex items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14" />
                 </svg>
-                Kirish
+                <span className="hidden sm:inline">Kirish</span>
               </button>
               <button
                 onClick={() => openAuthModal("register")}
-                className="px-6 py-2 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-600 hover:to-orange-600 text-white font-medium rounded-lg shadow-md transition-all duration-200 flex items-center gap-2"
+                className="px-4 sm:px-6 py-2 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-600 hover:to-orange-600 text-white font-medium rounded-lg shadow-md transition-all duration-200 flex items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
-                Ro‘yxatdan o‘tish
+                <span className="hidden sm:inline">Ro‘yxatdan o‘tish</span>
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-6">
-              {/* Lichni kabinet */}
+            <div className="flex items-center gap-4 sm:gap-6">
+              
+              {/* Kabinet button - hidden on mobile */}
               <button
                 onClick={onOpenKabinet}
                 className="hidden sm:flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-amber-400 font-medium transition-colors"
@@ -118,7 +119,7 @@ export default function Navbar({
                   </svg>
                 </button>
 
-                {/* Dropdown */}
+                {/* Dropdown Menu */}
                 {open && (
                   <>
                     <div 

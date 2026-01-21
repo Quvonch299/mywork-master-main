@@ -10,19 +10,19 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.18,
-      delayChildren: 0.2,
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: -60 },
+  hidden: { opacity: 0, y: 40 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.9,
+      duration: 0.8,
       ease: "easeOut",
     },
   },
@@ -30,112 +30,134 @@ const item = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-white px-6 md:px-12 lg:px-20 py-24 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-black px-5 sm:px-10 lg:px-20 py-16 overflow-hidden">
+      {/* Yulduzli kosmik background (oq-qora) */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-black" />
+
+        {/* Yulduzlar qatlami 1 */}
+        <div
+          className="absolute inset-0 bg-transparent animate-driftSlow opacity-60"
+          style={{
+            boxShadow: `
+              1200px 800px 1px #fff,
+              300px 1400px 1px #eee,
+              1800px 500px 2px #fff,
+              600px 1100px 1px #ddd,
+              1500px 200px 1px #fff,
+              400px 900px 1px #eee,
+              900px 600px 1px #fff,
+              200px 1700px 2px #ddd,
+              1700px 300px 1px #fff,
+              800px 1200px 1px #eee
+            `,
+          }}
+        />
+
+        {/* Yulduzlar qatlami 2 */}
+        <div
+          className="absolute inset-0 bg-transparent animate-drift opacity-40"
+          style={{
+            boxShadow: `
+              500px 700px 1px #fff,
+              1400px 400px 1px #eee,
+              100px 1600px 1px #fff,
+              1100px 900px 2px #ddd,
+              1600px 100px 1px #fff,
+              700px 1300px 1px #eee
+            `,
+          }}
+        />
+
+        {/* Subtle twinkling */}
+        <div className="absolute inset-0 animate-twinkle opacity-45">
+          <div className="absolute inset-0 bg-[radial-gradient(#ffffff28_1px,transparent_2px)] [background-size:70px_70px]" />
+        </div>
+      </div>
+
+      {/* Kontent */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
         className="relative z-10 max-w-7xl mx-auto w-full"
       >
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* TEXT */}
-          <div className="space-y-9 text-center lg:text-left">
+          {/* Matn qismi */}
+          <div className="space-y-8 text-center lg:text-left">
 
+            {/* Badge */}
             <motion.div
               variants={item}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-indigo-50 text-indigo-700 text-sm font-semibold border border-indigo-100"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gray-900/50 backdrop-blur-sm text-gray-300 text-sm font-medium border border-gray-700"
             >
-              Web Developers
+              Frontend Developer
             </motion.div>
 
-            {/* 🔥 TYPING EFFECT TITLE */}
+            {/* Typewriter sarlavha */}
             <motion.h1
               variants={item}
-              className="text-5xl sm:text-6xl lg:text-4xl font-extrabold tracking-tight leading-tight"
+              className="text-5xl sm:text-6xl lg:text-4xl font-extrabold tracking-tight leading-tight text-white"
             >
-              <span className="text-gray-900">I am </span>
-              <span className=" text-yellow-600 bg-clip-text text-transparent">
+        
+              <span className="text-white">
+                I am {''}
                 <Typewriter
+                
                   words={[
                     "React Developer",
                     "Next.js Developer",
-                    "Typscript Developer",
+                    "TypeScript Developer",
                     "Frontend Engineer",
                   ]}
                   loop={0}
                   cursor
                   cursorStyle="|"
-                  typeSpeed={90}
-                  deleteSpeed={60}
-                  delaySpeed={1500}
+                  typeSpeed={80}
+                  deleteSpeed={50}
+                  delaySpeed={2000}
                 />
               </span>
             </motion.h1>
 
-            <motion.p
-              variants={item}
-              className="text-xl lg:text-2xl text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed"
-            >
-              Zamonaviy, tezkor va chiroyli web ilovalar yarataman.
-              Toza kod, yaxshi UX va yuqori performance — mening ustuvorligim.
-            </motion.p>
-
+            {/* Ijtimoiy tarmoqlar */}
             <motion.div
               variants={item}
-              className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start"
+              className="flex justify-center lg:justify-start gap-8 pt-4"
             >
-              <motion.a
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                href="/projects"
-                className="group px-8 py-4 bg-yellow-600 text-white rounded-xl font-semibold text-lg shadow-xl  transition flex items-center gap-2 justify-center"
-              >
-                Loyihalarim
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-
-              <motion.a
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                href="#contact"
-                className="px-8 py-4 border-2 border-gray-300 text-gray-800 rounded-xl font-semibold text-lg hover:border-yellow-600 hover:text-yellow-600 transition"
-              >
-                Bog‘lanish
-              </motion.a>
-            </motion.div>
-
-            <motion.div
-              variants={item}
-              className="flex justify-center lg:justify-start gap-6 pt-4"
-            >
-              <a href="https://github.com/YOUR_USERNAME" target="_blank">
-                <Github className="w-7 h-7 text-gray-500 hover:text-indigo-600 transition" />
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer">
+                <Github className="w-8 h-8 text-gray-400 hover:text-white transition-colors duration-300" />
               </a>
-              <a href="https://linkedin.com/in/quvonchbek" target="_blank">
-                <Linkedin className="w-7 h-7 text-gray-500 hover:text-indigo-600 transition" />
+              <a href="https://linkedin.com/in/quvonchbek" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="w-8 h-8 text-gray-400 hover:text-white transition-colors duration-300" />
               </a>
             </motion.div>
           </div>
 
-          {/* IMAGE */}
-          <motion.div variants={item} className="relative mx-auto max-w-md">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+          {/* Rasm qismi */}
+          <motion.div variants={item} className="relative mx-auto max-w-[380px] lg:max-w-md">
+            <div className="relative rounded-3xl overflow-hidden border-2 border-gray-800 shadow-2xl">
               <Image
                 src="/quvonch.jpg"
                 alt="Quvonchbek"
                 width={600}
                 height={800}
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 priority
               />
             </div>
 
-            <div className="absolute -bottom-6 -right-6 bg-white px-6 py-3 rounded-full shadow-lg text-sm font-semibold text-indigo-700 border border-indigo-100">
+            {/* "Open to Work" badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+              className="absolute -bottom-5 -right-5 bg-gray-900/90 backdrop-blur-md px-6 py-3 rounded-full border border-gray-700 text-sm font-medium text-white shadow-lg"
+            >
               Open to Work
-            </div>
+            </motion.div>
           </motion.div>
-
         </div>
       </motion.div>
     </section>
