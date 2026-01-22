@@ -54,7 +54,7 @@ export default function Skills() {
           transition={{ duration: 1 }}
           className="text-center mb-16"
         >
-          <h2 className="text-6xl sm:text-7xl font-black text-white tracking-wider drop-shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+          <h2 className="text-2xl sm:text-5xl font-black text-white tracking-wider drop-shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
             Skills
           </h2>
           <div className="mt-6 h-1.5 w-40 mx-auto bg-gradient-to-r from-gray-300 via-white to-gray-300 rounded-full opacity-80" />

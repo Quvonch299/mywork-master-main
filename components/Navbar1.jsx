@@ -48,12 +48,12 @@ export default function CenteredLogoNavbar() {
             >
               Savatcha
             </a>
-            <a
-              href="#"
+            <Link
+              href="/cantact"
               className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4"
             >
               Bog‘lanish
-            </a>
+            </Link>
           </div>
 
           {/* Mobile hamburger button */}
@@ -113,13 +113,13 @@ export default function CenteredLogoNavbar() {
           >
             Savatcha
           </a>
-          <a
-            href="#"
+          <Link
+            href="/cantact"
             className="block px-5 py-4 text-lg font-medium text-gray-200 hover:bg-gray-900 rounded-xl transition-colors"
             onClick={() => setMenuOpen(false)}
           >
             Bog‘lanish
-          </a>
+          </Link>
         </div>
       </div>
 
