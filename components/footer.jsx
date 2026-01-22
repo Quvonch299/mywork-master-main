@@ -1,6 +1,7 @@
-// components/Footer.tsx
+'use client';
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { HiArrowUpRight } from "react-icons/hi2";
 import {
   FaArrowUp,
@@ -12,10 +13,40 @@ import {
   FaFacebookF,
 } from "react-icons/fa";
 
+// Parent container uchun variant (staggerChildren bilan)
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,          // har bir bola 0.12 soniya farq bilan chiqadi
+      delayChildren: 0.2,
+    },
+  },
+};
+
+// Har bir child (bo'lim) uchun variant
+const itemVariants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
 export default function Footer() {
+  // Yuqoriga silliq scroll qilish funksiyasi
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="relative border-t border-gray-800 pt-24 md:pt-32 bg-black text-white overflow-hidden">
-      {/* Kosmik yulduzli fon */}
+      {/* Kosmik yulduzli fon (o'zgartirilmadi) */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-black" />
 
@@ -48,21 +79,25 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Kontent */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-14 md:py-16">
+      {/* Birinchi qism – kontaktlar */}
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-14 md:py-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }} // faqat bir marta animatsiya bo'ladi
+        variants={containerVariants}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-
-          {/* Bo'sh joy (agar kerak bo'lsa logo yoki boshqa narsa qo'yish mumkin) */}
           <div className="hidden lg:block" />
 
           {/* Manzil */}
-          <div className="flex flex-col items-center sm:items-start">
+          <motion.div className="flex flex-col items-center sm:items-start" variants={itemVariants}>
             <div className="flex items-center gap-2 mb-3">
               <FaMapMarkerAlt className="text-white text-xl" />
               <p className="font-medium text-lg text-white">Manzil</p>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed pl-8 sm:pl-0">
-              Buxoro viloyati, Shofirkon tumani, Ko'rishkent qishlog'i, 114-uy
+              Buxoro viloyati, Shofirkon tumani, Ko`rishkent qishlog`i, 114-uy
             </p>
             <a
               href="https://maps.app.goo.gl/oBkzwCvosa26yYat6"
@@ -72,10 +107,10 @@ export default function Footer() {
             >
               Xaritada ko‘rish <HiArrowUpRight className="text-xs" />
             </a>
-          </div>
+          </motion.div>
 
           {/* Telefon */}
-          <div className="flex flex-col items-center sm:items-start">
+          <motion.div className="flex flex-col items-center sm:items-start" variants={itemVariants}>
             <div className="flex items-center gap-2 mb-3">
               <FaPhoneAlt className="text-white text-xl" />
               <p className="font-medium text-lg text-white">Telefon</p>
@@ -87,10 +122,10 @@ export default function Footer() {
               <span>+998 33 891 09 04</span>
               <HiArrowUpRight className="text-xs" />
             </a>
-          </div>
+          </motion.div>
 
           {/* Email */}
-          <div className="flex flex-col items-center sm:items-start">
+          <motion.div className="flex flex-col items-center sm:items-start" variants={itemVariants}>
             <div className="flex items-center gap-2 mb-3">
               <FaEnvelope className="text-white text-xl" />
               <p className="font-medium text-lg text-white">Email</p>
@@ -102,17 +137,26 @@ export default function Footer() {
               <span>mominovquvonch2@gmail.com</span>
               <HiArrowUpRight className="text-xs" />
             </a>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <div className="relative z-10 border-t border-gray-800" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-14 md:py-16">
+      {/* Ikkinchi qism – logo + havolalar */}
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-14 md:py-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-
           {/* Logo */}
-          <div className="flex justify-center lg:justify-start items-start">
+          <motion.div
+            className="flex justify-center lg:justify-start items-start"
+            variants={itemVariants}
+          >
             <Image
               src="/logo.png"
               width={140}
@@ -121,20 +165,20 @@ export default function Footer() {
               className="object-contain"
               priority
             />
-          </div>
+          </motion.div>
 
           {/* Kompaniya */}
-          <div className="flex flex-col items-center sm:items-start">
+          <motion.div className="flex flex-col items-center sm:items-start" variants={itemVariants}>
             <h4 className="mb-4 font-medium text-lg text-white">Kompaniya</h4>
             <ul className="space-y-2.5 text-sm text-gray-400">
               <li className="hover:text-white transition-colors cursor-pointer">Biz haqimizda</li>
               <li className="hover:text-white transition-colors cursor-pointer">Sharhlar</li>
               <li className="hover:text-white transition-colors cursor-pointer">Aloqa</li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Ijtimoiy tarmoqlar */}
-          <div className="flex flex-col items-center sm:items-start">
+          <motion.div className="flex flex-col items-center sm:items-start" variants={itemVariants}>
             <h4 className="mb-4 font-medium text-lg text-white">Ijtimoiy tarmoqlar</h4>
             <ul className="space-y-2.5 text-sm text-gray-400">
               <a
@@ -155,24 +199,28 @@ export default function Footer() {
                 <FaFacebookF className="text-xl" /> Facebook
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Bo'sh joylar */}
           <div className="hidden lg:block" />
           <div className="hidden lg:block" />
         </div>
-      </div>
+      </motion.div>
 
       <div className="relative z-10 border-t border-gray-800" />
 
+      {/* Pastki qism – copyright + yuqoriga */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500 gap-4">
         <p>© 2025 Genius Electro. Barcha huquqlar himoyalangan.</p>
-        <a
-          href="#top"
+
+        {/* Yuqoriga tugmasi – silliq scroll */}
+        <motion.button
+          onClick={scrollToTop}
           className="flex items-center gap-2 hover:text-white transition-colors"
+          whileHover={{ scale: 1.08, x: 4 }}
+          whileTap={{ scale: 0.96 }}
         >
           <FaArrowUp className="text-xs" /> Yuqoriga qaytish
-        </a>
+        </motion.button>
       </div>
     </footer>
   );

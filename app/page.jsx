@@ -1,18 +1,15 @@
 import About from '@/components/about'
 import Forma from '@/components/form'
 import Hero from '@/components/hero'
+import TechMarquee from '@/components/icanuse'
 import SimpleNavbar from '@/components/Navbar1'
 import React from 'react'
-
+import { Toaster } from 'react-hot-toast'
 export default function Page() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden">
-      {/* Oq-qora yulduzli kosmik background */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Asosiy qora fon */}
         <div className="absolute inset-0 bg-black" />
-
-        {/* Yulduzlar qatlami 1 (sekin harakatlanuvchi, kattaroq) */}
         <div 
           className="absolute inset-0 bg-transparent animate-driftSlow opacity-60"
           style={{
@@ -30,8 +27,6 @@ export default function Page() {
             `,
           }}
         />
-
-        {/* Yulduzlar qatlami 2 (o'rta tezlik) */}
         <div 
           className="absolute inset-0 bg-transparent animate-drift opacity-40"
           style={{
@@ -45,19 +40,20 @@ export default function Page() {
             `,
           }}
         />
-
-        {/* Subtle twinkling (porlash effekti) */}
         <div className="absolute inset-0 animate-twinkle opacity-50 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(#ffffff28_1px,transparent_2px)] [background-size:70px_70px]" />
         </div>
       </div>
-
-      {/* Asosiy kontent – yuqori qatlamda */}
       <div className="relative z-10">
         <SimpleNavbar />
         <Hero />
         <About />
+        <TechMarquee />
         <Forma />
+        <Toaster
+  position="top-right"
+  reverseOrder={false}
+/>
       </div>
     </div>
   )

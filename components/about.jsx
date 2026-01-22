@@ -10,17 +10,17 @@ import {
 } from "react-icons/si";
 
 const skillsLeft = [
-  { name: "HTML / PUG", percent: 95, icon: <SiHtml5 className="text-white text-2xl" /> },
-  { name: "CSS / Scss", percent: 85, icon: <SiCss3 className="text-white text-2xl" /> },
-  { name: "Bootstrap / Tailwind", percent: 80, icon: <SiTailwindcss className="text-white text-2xl" /> },
-  { name: "Element UI / Chakra UI", percent: 80, icon: <SiReact className="text-white text-2xl" /> },
+  { name: "HTML / PUG", percent: 100, icon: <SiHtml5 className="text-white text-2xl" /> },
+  { name: "CSS / Scss", percent: 95, icon: <SiCss3 className="text-white text-2xl" /> },
+  { name: "Bootstrap / Tailwind", percent: 99, icon: <SiTailwindcss className="text-white text-2xl" /> },
+  { name: "Element UI / Chakra UI", percent: 99, icon: <SiReact className="text-white text-2xl" /> },
   { name: "JavaScript / TypeScript", percent: 80, icon: <SiJavascript className="text-white text-2xl" /> },
 ];
 
 const skillsRight = [
   { name: "Jquery / Gulp", percent: 85, icon: <SiJquery className="text-white text-2xl" /> },
-  { name: "ReactJs / Redux", percent: 80, icon: <SiRedux className="text-white text-2xl" /> },
-  { name: "Next / React Query", percent: 70, icon: <SiNextdotjs className="text-white text-2xl" /> },
+  { name: "ReactJs / Redux", percent: 90, icon: <SiRedux className="text-white text-2xl" /> },
+  { name: "Next / React Query", percent: 90, icon: <SiNextdotjs className="text-white text-2xl" /> },
   { name: "Vue 3 / Vuex", percent: 65, icon: <SiVuedotjs className="text-white text-2xl" /> },
   { name: "Github / Gitlab", percent: 70, icon: <SiGithub className="text-white text-2xl" /> },
 ];

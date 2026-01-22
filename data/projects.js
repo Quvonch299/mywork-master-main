@@ -159,4 +159,12 @@ export const projects = [
     image: "/image20.png",
     link: "https://myportfiol.vercel.app/",
   },
+    {
+    id: 21,
+    title: "Api Market",
+    description: "O`zim uhun amaliyot  ",
+    tech: [ "Next.js","Tailwind", "JavaScript"],
+    image: "/image21.png",
+    link: "https://market-eight-rose.vercel.app/",
+  },
 ];
